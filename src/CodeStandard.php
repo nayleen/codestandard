@@ -34,6 +34,7 @@ final class CodeStandard extends Config
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'new_line_for_chained_calls'
         ],
+        'no_unused_imports' => true,
         'ordered_class_elements' => [
             'order' => [
                 'use_trait',
