@@ -25,15 +25,18 @@ final class CodeStandard extends Config
         'concat_space' => [
             'spacing' => 'one',
         ],
+        'constant_case' => [
+            'case' => 'lower',
+        ],
         'declare_equal_normalize' => [
             'space' => 'single',
         ],
         'declare_strict_types' => true,
         'function_to_constant' => true,
-        'hash_to_slash_comment' => [],
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'new_line_for_chained_calls'
         ],
+        'no_extra_blank_lines' => true,
         'no_unused_imports' => true,
         'ordered_class_elements' => [
             'order' => [
@@ -72,9 +75,14 @@ final class CodeStandard extends Config
         'phpdoc_line_span' => [
             'const' => 'single',
             'method' => 'single',
-            'property'=> 'single',
+            'property' => 'single',
         ],
         'phpdoc_no_empty_return' => false,
+        'single_line_comment_style' => [
+            'comment_types' => [
+                'hash',
+            ],
+        ],
     ];
 
     public function __construct(string $name = 'default')
