@@ -2,13 +2,15 @@
 
 declare(strict_types = 1);
 
-namespace Bakabot;
+namespace Nayleen;
 
 use PHPUnit\Framework\TestCase;
 
 class CodeStandardTest extends TestCase
 {
-    /** @test */
+    /**
+     * @test
+     */
     public function provides_correct_defaults(): void
     {
         $codestandard = new CodeStandard();

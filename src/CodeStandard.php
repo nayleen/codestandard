@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace Bakabot;
+namespace Nayleen;
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
@@ -11,7 +11,9 @@ use ReflectionObject;
 // https://mlocati.github.io/php-cs-fixer-configurator/#version:2.18.2|configurator
 final class CodeStandard extends Config
 {
-    /** @var array<string, bool|array> */
+    /**
+     * @var array<string, bool|array>
+     */
     private array $rules = [
         '@PSR12' => true,
         'blank_line_before_statement' => [
@@ -34,7 +36,7 @@ final class CodeStandard extends Config
         'declare_strict_types' => true,
         'function_to_constant' => true,
         'multiline_whitespace_before_semicolons' => [
-            'strategy' => 'new_line_for_chained_calls'
+            'strategy' => 'no_multi_line',
         ],
         'no_extra_blank_lines' => true,
         'no_unused_imports' => true,
@@ -67,20 +69,28 @@ final class CodeStandard extends Config
             'sort_algorithm' => 'alpha',
         ],
         'php_unit_test_case_static_method_calls' => [
-            'call_type' => 'self'
+            'call_type' => 'self',
         ],
         'php_unit_method_casing' => [
             'case' => 'snake_case',
         ],
         'phpdoc_line_span' => [
-            'const' => 'single',
-            'method' => 'single',
-            'property' => 'single',
+            'const' => 'multi',
+            'method' => 'multi',
+            'property' => 'multi',
         ],
         'phpdoc_no_empty_return' => false,
         'single_line_comment_style' => [
             'comment_types' => [
                 'hash',
+            ],
+        ],
+        'trailing_comma_in_multiline' => [
+            'elements' => [
+                'arrays',
+                'arguments',
+                'parameters',
+                'match',
             ],
         ],
     ];
@@ -98,8 +108,7 @@ final class CodeStandard extends Config
             ->setFinder($this->createFinder())
             ->setRiskyAllowed(true)
             ->setUsingCache(false)
-            ->setRules($this->rules)
-        ;
+            ->setRules($this->rules);
     }
 
     private function createFinder(): Finder
@@ -109,8 +118,7 @@ final class CodeStandard extends Config
             ->in($this->getProjectDir())
             ->ignoreDotFiles(true)
             ->ignoreUnreadableDirs(true)
-            ->ignoreVCS(true)
-        ;
+            ->ignoreVCS(true);
     }
 
     private function getProjectDir(): string

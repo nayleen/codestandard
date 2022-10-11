@@ -1,0 +1,21 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: '${{ matrix.os }}'
+        strategy:
+            matrix:
+                os:
+                    - ubuntu-18.04
+        steps:
+            - uses: actions/checkout@v2
+            - run: docker-compose pull
+            - run: make ci

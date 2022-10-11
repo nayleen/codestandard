@@ -1,9 +1,9 @@
 {
-    "name": "bakabot/codestandard",
-    "description": "Wraps the PHPCSFixer standard into a class for easier reuse.",
+    "name": "nayleen/codestandard",
+    "description": "Wraps my preferred PHPCSFixer config into a class for easier reuse.",
     "license": "MIT",
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "friendsofphp/php-cs-fixer": "^3"
     },
     "require-dev": {
@@ -13,12 +13,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Bakabot\\": "src/"
+            "Nayleen\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Bakabot\\": "tests/"
+            "Nayleen\\": "tests/"
         }
     },
     "config": {
