@@ -1,3 +1,11 @@
+SHELL=/bin/bash
+
+UID := $(shell id -u)
+GID := $(shell id -g)
+
+export UID
+export GID
+
 ci: cs-diff psalm phpunit cleanup
 
 cleanup:
@@ -18,7 +26,7 @@ normalize:
 	@docker-compose run --rm php vendor/bin/php-cs-fixer fix 2>/dev/null
 
 psalm: composer
-	@docker-compose run --rm php vendor/bin/psalm 2>/dev/null
+	@docker-compose run --rm php vendor/bin/psalm --show-info=true 2>/dev/null
 
 phpunit: composer
 	@docker-compose run --rm php -dxdebug.mode=coverage vendor/bin/phpunit 2>/dev/null
