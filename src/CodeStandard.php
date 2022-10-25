@@ -12,7 +12,7 @@ use ReflectionObject;
 final class CodeStandard extends Config
 {
     /**
-     * @var array<string, bool|array>
+     * @var array<string, bool|array<string, mixed>>
      */
     private array $rules = [
         '@PSR12' => true,
