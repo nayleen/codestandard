@@ -36,6 +36,11 @@ final class CodeStandard extends Config
         ],
         'declare_strict_types' => true,
         'function_to_constant' => true,
+        'global_namespace_import' => [
+            'import_classes' => true,
+            'import_constants' => false,
+            'import_functions' => false,
+        ],
         'multiline_whitespace_before_semicolons' => [
             'strategy' => 'no_multi_line',
         ],
