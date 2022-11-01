@@ -78,12 +78,13 @@ final class CodeStandard extends Config
             'direction' => 'ascend',
             'order' => 'alpha',
         ],
-        'php_unit_test_case_static_method_calls' => [
-            'call_type' => 'self',
-        ],
         'php_unit_method_casing' => [
             'case' => 'snake_case',
         ],
+        'php_unit_test_case_static_method_calls' => [
+            'call_type' => 'self',
+        ],
+        'php_unit_test_class_requires_covers' => false,
         'phpdoc_align' => [
             'align' => 'left',
         ],
