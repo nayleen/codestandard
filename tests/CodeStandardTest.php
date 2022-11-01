@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * @internal
  */
-class CodeStandardTest extends TestCase
+final class CodeStandardTest extends TestCase
 {
     /**
      * @test
