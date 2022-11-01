@@ -6,15 +6,15 @@ namespace Nayleen;
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
-use ReflectionObject;
 
 // https://mlocati.github.io/php-cs-fixer-configurator/#version:2.18.2|configurator
 final class CodeStandard extends Config
 {
     /**
-     * @var array<string, bool|array<string, mixed>>
+     * @var array<string, array<string, mixed>|bool>
      */
     private array $rules = [
+        '@PhpCsFixer' => true,
         '@PSR12' => true,
         'blank_line_before_statement' => [
             'statements' => [
@@ -24,6 +24,7 @@ final class CodeStandard extends Config
         'cast_spaces' => [
             'space' => 'single',
         ],
+        'combine_nested_dirname' => true,
         'concat_space' => [
             'spacing' => 'one',
         ],
@@ -68,6 +69,10 @@ final class CodeStandard extends Config
             ],
             'sort_algorithm' => 'alpha',
         ],
+        'ordered_interfaces' => [
+            'direction' => 'ascend',
+            'order' => 'alpha',
+        ],
         'php_unit_test_case_static_method_calls' => [
             'call_type' => 'self',
         ],
@@ -95,35 +100,44 @@ final class CodeStandard extends Config
         ],
     ];
 
-    public function __construct(string $name = 'default')
+    public function __construct(string $basePath, string $name = 'default')
     {
         parent::__construct($name);
 
-        $this->applyDefaults();
+        $this->applyDefaults($basePath);
     }
 
-    private function applyDefaults(): void
+    private function applyDefaults(string $basePath): void
     {
         $this
-            ->setFinder($this->createFinder())
+            ->setFinder($this->createFinder($basePath))
             ->setRiskyAllowed(true)
             ->setUsingCache(false)
             ->setRules($this->rules);
     }
 
-    private function createFinder(): Finder
+    private function createFinder(string $basePath): Finder
     {
+        $projectDir = $this->getProjectDir($basePath);
+
         return Finder::create()
             ->files()
-            ->in($this->getProjectDir())
+            ->in(
+                [
+                    $projectDir . '/src',
+                    $projectDir . '/tests',
+                ],
+            )
             ->ignoreDotFiles(true)
             ->ignoreUnreadableDirs(true)
             ->ignoreVCS(true);
     }
 
-    private function getProjectDir(): string
+    private function getProjectDir(string $basePath): string
     {
-        $directory = dirname((new ReflectionObject($this))->getFileName());
+        $directory = is_file($basePath)
+            ? dirname($basePath)
+            : $basePath;
 
         while (!is_file($directory . '/composer.json')) {
             $directory = dirname($directory);
