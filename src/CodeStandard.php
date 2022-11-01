@@ -84,6 +84,9 @@ final class CodeStandard extends Config
         'php_unit_method_casing' => [
             'case' => 'snake_case',
         ],
+        'phpdoc_align' => [
+            'align' => 'left',
+        ],
         'phpdoc_line_span' => [
             'const' => 'multi',
             'method' => 'multi',
