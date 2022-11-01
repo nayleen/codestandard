@@ -14,7 +14,6 @@ final class CodeStandard extends Config
      * @var array<string, array<string, mixed>|bool>
      */
     private array $rules = [
-        '@PhpCsFixer' => true,
         '@PSR12' => true,
         'blank_line_before_statement' => [
             'statements' => [

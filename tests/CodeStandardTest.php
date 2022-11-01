@@ -22,7 +22,6 @@ class CodeStandardTest extends TestCase
         self::assertFalse($codestandard->getUsingCache());
 
         $rules = $codestandard->getRules();
-        self::assertArrayHasKey('@PhpCsFixer', $rules);
         self::assertArrayHasKey('@PSR12', $rules);
     }
 }
