@@ -122,7 +122,10 @@ final class CodeStandard extends Config
         'no_singleline_whitespace_before_semicolons' => true,
         'no_spaces_around_offset' => true,
         'no_superfluous_elseif' => true,
-        'no_superfluous_phpdoc_tags' => true,
+        'no_superfluous_phpdoc_tags' => [
+            'allow_mixed' => true,
+            'allow_unused_params' => true,
+        ],
         'no_trailing_comma_in_singleline' => true,
         'no_trailing_whitespace_in_string' => true,
         'no_unneeded_control_parentheses' => true,
