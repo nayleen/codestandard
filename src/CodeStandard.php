@@ -106,7 +106,11 @@ final class CodeStandard extends Config
                 'match',
             ],
         ],
-        'yoda_style' => false,
+        'yoda_style' => [
+            'equal' => false,
+            'identical' => false,
+            'less_and_greater' => false,
+        ],
     ];
 
     public function __construct(string $basePath, string $name = 'default')
