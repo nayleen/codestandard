@@ -66,9 +66,7 @@ final class CodeStandard extends Config
         'escape_implicit_backslashes' => true,
         'explicit_indirect_variable' => true,
         'explicit_string_variable' => true,
-        'final_internal_class' => [
-            'consider_absent_docblock_as_internal_class' => true,
-        ],
+        'final_internal_class' => false,
         'fopen_flag_order' => true,
         'fopen_flags' => true,
         'fully_qualified_strict_types' => true,
