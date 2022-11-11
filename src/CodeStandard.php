@@ -166,6 +166,11 @@ final class CodeStandard extends Config
             'sort_algorithm' => 'alpha',
         ],
         'ordered_imports' => [
+            'imports_order' => [
+                'class',
+                'function',
+                'const',
+            ],
             'sort_algorithm' => 'alpha',
         ],
         'ordered_interfaces' => [
