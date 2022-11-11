@@ -27,6 +27,7 @@ final class CodeStandard extends Config
                 'return',
             ],
         ],
+        'blank_line_between_import_groups' => true,
         'braces' => true,
         'cast_spaces' => [
             'space' => 'single',
