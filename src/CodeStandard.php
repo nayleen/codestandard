@@ -7,8 +7,8 @@ namespace Nayleen;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
-// https://mlocati.github.io/php-cs-fixer-configurator/#version:3.12.0|configurator
-final class CodeStandard extends Config
+// https://mlocati.github.io/php-cs-fixer-configurator/#version:3.16|configurator
+class CodeStandard extends Config
 {
     /**
      * @var array<string, array<string, mixed>|bool>
@@ -28,7 +28,6 @@ final class CodeStandard extends Config
             ],
         ],
         'blank_line_between_import_groups' => true,
-        'braces' => true,
         'cast_spaces' => [
             'space' => 'single',
         ],
@@ -47,13 +46,24 @@ final class CodeStandard extends Config
             'case' => 'lower',
         ],
         'control_structure_braces' => true,
-        'control_structure_continuation_position' => true,
-        'curly_braces_position' => true,
+        'control_structure_continuation_position' => [
+            'position' => 'same_line',
+        ],
+        'curly_braces_position' => [
+            'allow_single_line_anonymous_functions' => true,
+            'allow_single_line_empty_anonymous_classes' => true,
+            'anonymous_classes_opening_brace' => 'same_line',
+            'anonymous_functions_opening_brace' => 'same_line',
+            'classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
+            'control_structures_opening_brace' => 'same_line',
+            'functions_opening_brace' => 'next_line_unless_newline_at_signature_end',
+        ],
         'date_time_create_from_format_call' => true,
         'date_time_immutable' => true,
         'declare_equal_normalize' => [
             'space' => 'single',
         ],
+        'declare_parentheses' => true,
         'declare_strict_types' => true,
         'dir_constant' => true,
         'echo_tag_syntax' => [
@@ -260,7 +270,7 @@ final class CodeStandard extends Config
             ],
         ],
         'single_quote' => true,
-        'single_space_after_construct' => true,
+        'single_space_around_construct' => true,
         'space_after_semicolon' => true,
         'standardize_increment' => true,
         'standardize_not_equals' => true,
