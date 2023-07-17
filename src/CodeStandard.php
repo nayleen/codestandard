@@ -81,7 +81,6 @@ class CodeStandard extends Config
         'fopen_flags' => true,
         'fully_qualified_strict_types' => true,
         'function_to_constant' => true,
-        'function_typehint_space' => true,
         'general_phpdoc_tag_rename' => true,
         'get_class_to_class_keyword' => true,
         'global_namespace_import' => [
@@ -171,6 +170,7 @@ class CodeStandard extends Config
         'ordered_class_elements' => [
             'order' => [
                 'use_trait',
+                'case',
                 'property_private',
                 'property_protected',
                 'property_public',
@@ -291,6 +291,7 @@ class CodeStandard extends Config
             ],
         ],
         'trim_array_spaces' => true,
+        'type_declaration_spaces' => true,
         'types_spaces' => true,
         'unary_operator_spaces' => true,
         'use_arrow_functions' => true,
