@@ -168,6 +168,7 @@ class CodeStandard extends Config
         'object_operator_without_whitespace' => true,
         'operator_linebreak' => true,
         'ordered_class_elements' => [
+            'case_sensitive' => true,
             'order' => [
                 'use_trait',
                 'case',
