@@ -176,7 +176,7 @@ class CodeStandard extends Config
         'object_operator_without_whitespace' => true,
         'operator_linebreak' => true,
         'ordered_class_elements' => [
-            'case_sensitive' => true,
+            'case_sensitive' => false,
             'order' => [
                 'use_trait',
                 'case',
@@ -198,7 +198,7 @@ class CodeStandard extends Config
             'sort_algorithm' => 'alpha',
         ],
         'ordered_imports' => [
-            'case_sensitive' => true,
+            'case_sensitive' => false,
             'imports_order' => [
                 'class',
                 'function',
@@ -207,14 +207,15 @@ class CodeStandard extends Config
             'sort_algorithm' => 'alpha',
         ],
         'ordered_interfaces' => [
-            'case_sensitive' => true,
+            'case_sensitive' => false,
             'direction' => 'ascend',
             'order' => 'alpha',
         ],
         'ordered_traits' => [
-            'case_sensitive' => true,
+            'case_sensitive' => false,
         ],
         'ordered_types' => [
+            'null_adjustment' => 'always_last',
             'sort_algorithm' => 'alpha',
         ],
         'php_unit_construct' => true,
