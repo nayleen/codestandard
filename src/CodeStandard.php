@@ -7,7 +7,9 @@ namespace Nayleen;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
-// https://mlocati.github.io/php-cs-fixer-configurator/#version:3.16|configurator
+/**
+ * @see https://mlocati.github.io/php-cs-fixer-configurator/#version:3.38|configurator
+ */
 class CodeStandard extends Config
 {
     /**
@@ -21,13 +23,24 @@ class CodeStandard extends Config
         'array_syntax' => true,
         'assign_null_coalescing_to_coalesce_equal' => true,
         'backtick_to_shell_exec' => true,
-        'binary_operator_spaces' => true,
+        'binary_operator_spaces' => [
+            'default' => 'single_space',
+        ],
         'blank_line_before_statement' => [
             'statements' => [
                 'return',
             ],
         ],
         'blank_line_between_import_groups' => true,
+        'braces_position' => [
+            'allow_single_line_anonymous_functions' => true,
+            'allow_single_line_empty_anonymous_classes' => true,
+            'anonymous_classes_opening_brace' => 'same_line',
+            'anonymous_functions_opening_brace' => 'same_line',
+            'classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
+            'control_structures_opening_brace' => 'same_line',
+            'functions_opening_brace' => 'next_line_unless_newline_at_signature_end',
+        ],
         'cast_spaces' => [
             'space' => 'single',
         ],
@@ -39,6 +52,7 @@ class CodeStandard extends Config
         'combine_consecutive_unsets' => true,
         'combine_nested_dirname' => true,
         'comment_to_phpdoc' => true,
+        'compact_nullable_type_declaration' => true,
         'concat_space' => [
             'spacing' => 'one',
         ],
@@ -48,15 +62,6 @@ class CodeStandard extends Config
         'control_structure_braces' => true,
         'control_structure_continuation_position' => [
             'position' => 'same_line',
-        ],
-        'curly_braces_position' => [
-            'allow_single_line_anonymous_functions' => true,
-            'allow_single_line_empty_anonymous_classes' => true,
-            'anonymous_classes_opening_brace' => 'same_line',
-            'anonymous_functions_opening_brace' => 'same_line',
-            'classes_opening_brace' => 'next_line_unless_newline_at_signature_end',
-            'control_structures_opening_brace' => 'same_line',
-            'functions_opening_brace' => 'next_line_unless_newline_at_signature_end',
         ],
         'date_time_create_from_format_call' => true,
         'date_time_immutable' => true,
@@ -110,7 +115,7 @@ class CodeStandard extends Config
         'native_function_invocation' => [
             'include' => [],
         ],
-        'native_function_type_declaration_casing' => true,
+        'native_type_declaration_casing' => true,
         'no_alias_functions' => true,
         'no_alias_language_construct_call' => true,
         'no_alternative_syntax' => true,
@@ -164,6 +169,9 @@ class CodeStandard extends Config
         'no_whitespace_before_comma_in_array' => true,
         'non_printable_character' => true,
         'normalize_index_brace' => true,
+        'nullable_type_declaration' => [
+            'syntax' => 'question_mark',
+        ],
         'nullable_type_declaration_for_default_null_value' => true,
         'object_operator_without_whitespace' => true,
         'operator_linebreak' => true,
@@ -190,6 +198,7 @@ class CodeStandard extends Config
             'sort_algorithm' => 'alpha',
         ],
         'ordered_imports' => [
+            'case_sensitive' => true,
             'imports_order' => [
                 'class',
                 'function',
@@ -198,10 +207,16 @@ class CodeStandard extends Config
             'sort_algorithm' => 'alpha',
         ],
         'ordered_interfaces' => [
+            'case_sensitive' => true,
             'direction' => 'ascend',
             'order' => 'alpha',
         ],
-        'ordered_traits' => true,
+        'ordered_traits' => [
+            'case_sensitive' => true,
+        ],
+        'ordered_types' => [
+            'sort_algorithm' => 'alpha',
+        ],
         'php_unit_construct' => true,
         'php_unit_dedicate_assert' => true,
         'php_unit_dedicate_assert_internal_type' => true,
@@ -237,6 +252,7 @@ class CodeStandard extends Config
         'phpdoc_no_package' => true,
         'phpdoc_no_useless_inheritdoc' => true,
         'phpdoc_order' => true,
+        'phpdoc_param_order' => true,
         'phpdoc_return_self_reference' => true,
         'phpdoc_scalar' => true,
         'phpdoc_single_line_var_spacing' => true,
@@ -270,6 +286,7 @@ class CodeStandard extends Config
                 'hash',
             ],
         ],
+        'single_line_empty_body' => true,
         'single_quote' => true,
         'single_space_around_construct' => true,
         'space_after_semicolon' => true,
