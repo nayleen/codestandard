@@ -1,11 +1,10 @@
 name: ci
 
 on:
-  push:
+  pull_request_target:
     branches:
       - latest
-
-  pull_request_target:
+  push:
     branches:
       - latest
 
