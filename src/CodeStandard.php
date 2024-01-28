@@ -51,7 +51,11 @@ class CodeStandard extends Config
         'combine_consecutive_issets' => true,
         'combine_consecutive_unsets' => true,
         'combine_nested_dirname' => true,
-        'comment_to_phpdoc' => true,
+        'comment_to_phpdoc' => [
+            'ignored_tags' => [
+                'phpstan-ignore-line',
+            ],
+        ],
         'compact_nullable_type_declaration' => true,
         'concat_space' => [
             'spacing' => 'one',
