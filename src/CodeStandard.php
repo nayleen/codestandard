@@ -8,7 +8,7 @@ use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 
 /**
- * @see https://mlocati.github.io/php-cs-fixer-configurator/#version:3.38|configurator
+ * @see https://mlocati.github.io/php-cs-fixer-configurator/#version:3.52|configurator
  */
 class CodeStandard extends Config
 {
@@ -82,7 +82,6 @@ class CodeStandard extends Config
         'empty_loop_condition' => true,
         'ereg_to_preg' => true,
         'error_suppression' => true,
-        'escape_implicit_backslashes' => true,
         'explicit_indirect_variable' => true,
         'explicit_string_variable' => true,
         'final_internal_class' => false,
@@ -300,6 +299,7 @@ class CodeStandard extends Config
         'statement_indentation' => true,
         'strict_comparison' => true,
         'strict_param' => true,
+        'string_implicit_backslashes' => true,
         'string_length_to_empty' => true,
         'string_line_ending' => true,
         'switch_continue_to_break' => true,
