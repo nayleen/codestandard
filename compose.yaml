@@ -6,5 +6,6 @@ services:
       - PHP_EXTENSION_XDEBUG=1
       - XDEBUG_MODE=off
     init: true
+    network_mode: host
     volumes:
-      - $PWD:/usr/src/app
+      - ./:/usr/src/app

@@ -24,7 +24,6 @@
       "ergebnis/composer-normalize": true,
       "phpstan/extension-installer": true
     },
-    "lock": false,
     "preferred-install": {
       "*": "dist"
     },
