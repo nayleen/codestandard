@@ -31,7 +31,7 @@ update: ## update dependencies
 
 # helpers
 cleanup:
-	@docker compose down -v 2>/dev/null
+	@docker compose down -t0 -v 2>/dev/null
 
 composer.lock:
 	@docker compose run --rm php composer update --no-cache --prefer-$(DEPENDENCY_VERSIONS) --prefer-stable 2>/dev/null
