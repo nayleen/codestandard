@@ -1,7 +1,7 @@
 DEPENDENCY_VERSIONS ?= stable
 
 .DEFAULT_GOAL := help
-.PHONY: check-style coverage fix-style help shell static tests update
+.PHONY: cleanup check-style coverage fix-style help shell static tests update
 
 -include Makefile.local
 
