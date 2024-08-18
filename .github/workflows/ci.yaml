@@ -29,5 +29,5 @@ jobs:
       - uses: arduino/setup-task@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - run: docker-compose pull --quiet
+      - run: docker compose pull --quiet
       - run: task ci
