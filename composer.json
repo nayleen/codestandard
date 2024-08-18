@@ -29,5 +29,8 @@
       "*": "dist"
     },
     "sort-packages": true
+  },
+  "scripts": {
+    "post-update-cmd": "@composer normalize"
   }
 }
