@@ -1,11 +1,10 @@
 services:
   php:
-    image: thecodingmachine/php:${PHP_VERSION:-8.1}-v4-cli
+    image: ghcr.io/nayleen/php:${PHP_VERSION:-8.3}
     container_name: codestandard_php
     environment:
-      - PHP_EXTENSION_XDEBUG=1
-      - XDEBUG_MODE=off
+      XDEBUG_MODE: "${XDEBUG_MODE:-off}"
     init: true
     network_mode: host
     volumes:
-      - ./:/usr/src/app
+      - ./:/app/src
