@@ -3,9 +3,11 @@ services:
     image: ghcr.io/nayleen/php:${PHP_VERSION:-8.3}
     container_name: codestandard_php
     environment:
-      PHP_CS_FIXER_IGNORE_ENV: ${PHP_CS_FIXER_IGNORE_ENV:-false}
+      COMPOSER_ROOT_VERSION: "dev-latest"
       XDEBUG_MODE: "${XDEBUG_MODE:-off}"
     init: true
     network_mode: host
+    pull_policy: always
     volumes:
+      - $HOME/.composer:/app/var/composer
       - ./:/app/src

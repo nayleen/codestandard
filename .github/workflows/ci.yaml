@@ -21,11 +21,10 @@ jobs:
           - stable
           - lowest
     env:
-      PHP_CS_FIXER_IGNORE_ENV: "${{ matrix.php == '8.4' }}"
       PHP_VERSION: ${{ matrix.php }}
       DEPENDENCY_VERSIONS: ${{ matrix.dependencies }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: arduino/setup-task@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}

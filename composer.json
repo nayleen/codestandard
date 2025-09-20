@@ -2,16 +2,17 @@
   "name": "nayleen/codestandard",
   "description": "Wraps my preferred PHPCSFixer config into a class for easier reuse.",
   "license": "MIT",
+  "type": "library",
   "require": {
-    "php": ">=8.1",
-    "friendsofphp/php-cs-fixer": "^3.75.0"
+    "php": ">=8.3",
+    "friendsofphp/php-cs-fixer": "^3.87.2"
   },
   "require-dev": {
-    "ergebnis/composer-normalize": "^2.47",
+    "ergebnis/composer-normalize": "^2.48.2",
     "phpstan/extension-installer": "^1.4.3",
-    "phpstan/phpstan": "^2.1.17",
-    "phpstan/phpstan-phpunit": "^2.0.6",
-    "phpunit/phpunit": "^12.2.0",
+    "phpstan/phpstan": "^2.1.27",
+    "phpstan/phpstan-phpunit": "^2.0.7",
+    "phpunit/phpunit": "^12.3.11",
     "roave/security-advisories": "dev-latest"
   },
   "autoload": {

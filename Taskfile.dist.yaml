@@ -2,44 +2,65 @@ version: '3'
 
 silent: true
 
+vars:
+  dc: 'docker compose'
+  composer: '{{.dc}} run --rm php composer'
+  php: '{{.dc}} run --rm php php'
+
 tasks:
   ci:
-    deps: [install]
     cmds:
       - task: check-style
       - task: static
       - task: test
-      - task: clean
+      - defer:
+          task: clean
+    deps:
+      - install
 
   check-style:
-    deps: [install]
-    cmd: docker compose run --rm php php vendor/bin/php-cs-fixer fix --dry-run --diff --verbose 2>/dev/null
+    cmd: '{{.php}} vendor/bin/php-cs-fixer fix --dry-run --diff --verbose 2>/dev/null'
+    deps:
+      - install
     sources:
+      - .php-cs-fixer.php
+      - .php-cs-fixer.dist.php
       - src/**/*.php
       - tests/**/*.php
 
   clean:
-    cmd: docker compose down -t0 -v 2>/dev/null
+    cmd: '{{.dc}} down -t0 -v 2>/dev/null'
 
   coverage:
-    deps: [install]
-    cmd: docker compose run --rm -eXDEBUG_MODE=coverage php php vendor/bin/phpunit --coverage-html=coverage/ 2>/dev/null
+    cmd: '{{.php}} vendor/bin/phpunit --coverage-html=coverage/ 2>/dev/null'
+    deps:
+      - install
+    env:
+      XDEBUG_MODE: coverage
     generates:
       - coverage/**/*
     sources:
+      - phpunit.xml
+      - phpunit.xml.dist
       - src/**/*.php
       - tests/**/*.php
 
   fix-style:
-    deps: [install]
-    cmd: docker compose run --rm php php vendor/bin/php-cs-fixer fix 2>/dev/null
+    cmd: '{{.php}} vendor/bin/php-cs-fixer fix 2>/dev/null'
+    deps:
+      - install
     sources:
+      - .php-cs-fixer.php
+      - .php-cs-fixer.dist.php
       - src/**/*.php
       - tests/**/*.php
 
   install:
-    deps: [validate]
-    cmd: docker compose run --rm php composer update --no-cache --prefer-{{ .DEPENDENCY_VERSIONS | default "stable" }} --prefer-stable 2>/dev/null
+    cmd: '{{.composer}} update --prefer-{{ .DEPENDENCY_VERSIONS | default "stable" }} --prefer-stable 2>/dev/null'
+    aliases:
+      - composer
+    deps:
+      - validate
     generates:
       - composer.lock
       - vendor/**/*
@@ -47,30 +68,43 @@ tasks:
       - composer.json
 
   shell:
-    cmd: docker compose run --rm php bash 2>/dev/null
+    cmd: '{{.dc}} run --rm php bash 2>/dev/null'
     interactive: true
 
   static:
-    deps: [install]
-    cmd: docker compose run --rm php php vendor/bin/phpstan 2>/dev/null
+    cmd: '{{.php}} vendor/bin/phpstan 2>/dev/null'
+    aliases:
+      - phpstan
+    deps:
+      - install
     sources:
+      - phpstan.neon
+      - phpstan.neon.dist
       - src/**/*.php
       - tests/**/*.php
 
   test:
-    deps: [install]
     cmds:
-      - docker compose run --rm php php vendor/bin/phpunit 2>/dev/null
+      - '{{.php}} vendor/bin/phpunit 2>/dev/null'
       - task: clean
+    aliases:
+      - tests
+    deps:
+      - install
     sources:
+      - phpunit.xml
+      - phpunit.xml.dist
       - src/**/*.php
       - tests/**/*.php
 
   update:
-    deps: [validate]
-    cmd: docker compose run --rm php composer update --no-cache --prefer-stable 2>/dev/null
+    cmd: '{{.composer}} update --prefer-stable 2>/dev/null'
+    aliases:
+      - upgrade
+    deps:
+      - validate
 
   validate:
-    cmd: docker compose run --rm php composer validate 2>/dev/null
+    cmd: '{{.composer}} validate 2>/dev/null'
     sources:
       - composer.json

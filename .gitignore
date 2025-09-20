@@ -2,6 +2,7 @@
 .task/
 coverage/
 vendor/
+.php-cs-fixer.php
 compose.override.yaml
 composer.lock
 phpstan.neon
