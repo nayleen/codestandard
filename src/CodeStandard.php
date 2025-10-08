@@ -59,7 +59,7 @@ class CodeStandard extends Config
     }
 
     /**
-     * @see https://mlocati.github.io/php-cs-fixer-configurator/#version:3.52|configurator
+     * @see https://mlocati.github.io/php-cs-fixer-configurator/#version:3.88|configurator
      *
      * @return array<string, array<string, bool|mixed>|bool>
      */
@@ -155,12 +155,26 @@ class CodeStandard extends Config
             'linebreak_after_opening_tag' => true,
             'list_syntax' => true,
             'logical_operators' => true,
+            'new_expression_parentheses' => [
+                'use_parentheses' => true,
+            ],
             'magic_constant_casing' => true,
             'magic_method_casing' => true,
             'method_chaining_indentation' => true,
             'modernize_strpos' => true,
             'modernize_types_casting' => true,
+            'modifier_keywords' => [
+                'elements' => [
+                    'const',
+                    'method',
+                    'property',
+                ],
+            ],
             'multiline_comment_opening_closing' => true,
+            'multiline_promoted_properties' => [
+                'keep_blank_lines' => false,
+                'minimum_number_of_parameters' => 2,
+            ],
             'multiline_whitespace_before_semicolons' => [
                 'strategy' => 'no_multi_line',
             ],
@@ -207,6 +221,7 @@ class CodeStandard extends Config
                 'allow_unused_params' => true,
             ],
             'no_trailing_comma_in_singleline' => true,
+            'no_trailing_whitespace_in_comment' => true,
             'no_trailing_whitespace_in_string' => true,
             'no_unneeded_control_parentheses' => true,
             'no_unneeded_final_method' => true,
@@ -228,6 +243,9 @@ class CodeStandard extends Config
             'nullable_type_declaration_for_default_null_value' => true,
             'object_operator_without_whitespace' => true,
             'operator_linebreak' => true,
+            'ordered_attributes' => [
+                'sort_algorithm' => 'alpha',
+            ],
             'ordered_class_elements' => [
                 'case_sensitive' => false,
                 'order' => [
@@ -270,6 +288,9 @@ class CodeStandard extends Config
             'ordered_types' => [
                 'null_adjustment' => 'always_last',
                 'sort_algorithm' => 'alpha',
+            ],
+            'php_unit_attributes' => [
+                'keep_annotations' => false,
             ],
             'php_unit_construct' => true,
             'php_unit_dedicate_assert' => true,
