@@ -1,5 +1,13 @@
 version: '3'
 
+set:
+  - errexit
+  - nounset
+  - pipefail
+
+shopt:
+  - globstar
+
 silent: true
 
 vars:
