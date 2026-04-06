@@ -156,7 +156,7 @@ class CodeStandard extends Config
             'list_syntax' => true,
             'logical_operators' => true,
             'new_expression_parentheses' => [
-                'use_parentheses' => true,
+                'use_parentheses' => false,
             ],
             'magic_constant_casing' => true,
             'magic_method_casing' => true,
