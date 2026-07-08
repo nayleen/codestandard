@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Nayleen;
 
+use Composer\InstalledVersions;
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
 use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
@@ -56,6 +57,25 @@ class CodeStandard extends Config
         // whether the "file" key exists depends on debug_backtrace options
         // @phpstan-ignore-next-line
         return dirname(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, limit: 2)[1]['file']);
+    }
+
+    private function phpUnitTarget(): string
+    {
+        if (!InstalledVersions::isInstalled('phpunit/phpunit')) {
+            return 'newest';
+        }
+
+        $version = InstalledVersions::getVersion('phpunit/phpunit');
+
+        if (!is_string($version) || preg_match('/^(\d+)\./', $version, $matches) !== 1) {
+            return 'newest';
+        }
+
+        return match ((int) $matches[1]) {
+            9, 10 => '10.0',
+            11 => '11.0',
+            default => 'newest',
+        };
     }
 
     /**
@@ -310,6 +330,7 @@ class CodeStandard extends Config
             ],
             'php_unit_test_case_static_method_calls' => [
                 'call_type' => 'self',
+                'target' => $this->phpUnitTarget(),
             ],
             'phpdoc_align' => [
                 'align' => 'left',
