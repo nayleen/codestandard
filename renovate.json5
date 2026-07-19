@@ -1,0 +1,30 @@
+{
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  extends: [
+    'config:best-practices'
+  ],
+  enabledManagers: [
+    'composer',
+    'github-actions'
+  ],
+  packageRules: [
+    {
+      matchManagers: [
+        'composer'
+      ],
+      labels: [
+        '📦 Composer'
+      ],
+    },
+    {
+      matchManagers: [
+        'github-actions'
+      ],
+      labels: [
+        '⚙️ GHA'
+      ],
+      groupName: 'GitHub Actions',
+      groupSlug: 'gha'
+    },
+  ],
+}

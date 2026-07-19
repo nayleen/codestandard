@@ -10,4 +10,5 @@ tests/ export-ignore
 compose.yaml export-ignore
 phpstan.neon.dist export-ignore
 phpunit.xml.dist export-ignore
+renovate.json5 export-ignore
 Taskfile.dist.yaml export-ignore
