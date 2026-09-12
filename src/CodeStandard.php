@@ -98,7 +98,18 @@ class CodeStandard extends Config
             ],
             'blank_line_before_statement' => [
                 'statements' => [
+                    'break',
+                    'continue',
+                    'do',
+                    'exit',
+                    'for',
+                    'foreach',
+                    'if',
                     'return',
+                    'switch',
+                    'throw',
+                    'try',
+                    'while',
                 ],
             ],
             'blank_line_between_import_groups' => true,
